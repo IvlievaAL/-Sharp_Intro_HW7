@@ -12,6 +12,7 @@ int [,] Matrix= Get2DArray(M,N,MaxValue,MinValue);
 Print2DArray (Matrix); //вывод массива для проверки
 System.Console.WriteLine(); //пустая строка чтоб легче читалась консоль
 double [] MeansOfColumns= GetTheMeansOfColumnsIn2DArray(Matrix);
+MassiveAsString (MeansOfColumns); //вывод средних по столбцам
 
 double [] GetTheMeansOfColumnsIn2DArray (int [,] Matrix)
 {
@@ -23,14 +24,10 @@ double [] GetTheMeansOfColumnsIn2DArray (int [,] Matrix)
       {
        SumOfElementsInColumn=SumOfElementsInColumn+Matrix[i,j];
       }
-    System.Console.WriteLine(SumOfElementsInColumn); // вывод суммы элементов столбца
-    System.Console.WriteLine(); //пустая строка чтоб легче читалась консоль
     double temp=SumOfElementsInColumn;
      MeansOfColumnsIn2DArray[j]=temp/Matrix.GetLength(1);
-     System.Console.WriteLine(MeansOfColumnsIn2DArray[j]); //вывод среднего по каждому столбцу
      SumOfElementsInColumn=0;
      j++;
-     System.Console.WriteLine(); //пустая строка чтоб легче читалась консоль
     }
  return MeansOfColumnsIn2DArray;
 }
@@ -58,4 +55,10 @@ for (int i=0; i<Matrix.GetLength(0); i++)
     }
     System.Console.WriteLine();
  }
+}
+
+void MassiveAsString (double [] MeansOfColumns)
+{
+    string ArrayAsString = string.Join(" , ", MeansOfColumns); 
+    System.Console.WriteLine(ArrayAsString);
 }
