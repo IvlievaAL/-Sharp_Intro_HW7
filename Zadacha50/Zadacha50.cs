@@ -10,7 +10,40 @@ int MaxValue = Int32.Parse(System.Console.ReadLine());
 System.Console.WriteLine("Enter minimal number: "); 
 int MinValue = Int32.Parse(System.Console.ReadLine());
 int [,] Matrix= Get2DArray(M,N,MaxValue,MinValue);
-Print2DArray (Matrix);
+Print2DArray (Matrix); //вывод массива - для проверки, нужный ли элемент выдан
+System.Console.WriteLine("Enter row number of element: "); 
+int I = Int32.Parse(System.Console.ReadLine());
+System.Console.WriteLine("Enter column number of element: "); 
+int J = Int32.Parse(System.Console.ReadLine());
+GetChosenElementFrom2DArray(I,J);
+
+void GetChosenElementFrom2DArray (int I, int J)
+{
+    if (I<0|J<0) 
+    {
+        System.Console.WriteLine("Index in the array can not be negative");
+    }
+    else 
+    {
+      if (I<Matrix.GetLength(0)&&J<Matrix.GetLength(1))
+      {
+        for (int i=0; i<Matrix.GetLength(0); i++)
+        {
+          for (int j=0; j<Matrix.GetLength(1); j++)
+          {
+            if (i==I&&j==J)
+            {
+             System.Console.WriteLine(Matrix[i,j]);
+            }
+          }
+        }
+      }
+      else
+      {
+        System.Console.WriteLine("No such element in the array");
+      }
+    }
+}
 
 int [,] Get2DArray (int M, int N, int MaxValue, int MinValue)
 {
