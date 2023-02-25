@@ -29,6 +29,12 @@ int [,] Get2DArray(int M,int N)
      j++;
      System.Console.WriteLine("прошел2");
     }
+    while (i+1<Array2D.GetLength(0) &&Array2D[i+1,j]==0)
+    {
+     Array2D[i+1,j]= Array2D[i,j]+1;
+     i++;
+     System.Console.WriteLine("прошел3");
+    }
     return Array2D;
 }
 
