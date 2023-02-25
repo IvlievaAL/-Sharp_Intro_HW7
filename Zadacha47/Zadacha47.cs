@@ -4,27 +4,24 @@ System.Console.WriteLine("Enter number of rows: ");
 int M = Int32.Parse(System.Console.ReadLine());
 System.Console.WriteLine("Enter number of columns: "); 
 int N = Int32.Parse(System.Console.ReadLine());
-System.Console.WriteLine("Enter maximal number: "); 
-int MaxValue = Int32.Parse(System.Console.ReadLine());
-System.Console.WriteLine("Enter minimal number: "); 
-int MinValue = Int32.Parse(System.Console.ReadLine());
-int [,] Matrix= Get2DArray(M,N,MaxValue,MinValue);
+double [,] Matrix= Get2DArrayofRealNumbers(M,N);
 Print2DArray (Matrix);
 
-int [,] Get2DArray (int M, int N, int MaxValue, int MinValue)
+double [,] Get2DArrayofRealNumbers (int M, int N)
 {
-int[,] Array2D = new int [M,N];
+double[,] Array2D = new double [M,N];
+Random rand=new Random();
 for (int i=0; i<Array2D.GetLength(0); i++)
  {
     for (int j=0; j<Array2D.GetLength(1); j++)
     {
-      Array2D[i,j]= new Random().Next(MinValue, MaxValue+1);
+      Array2D[i,j]= rand.NextDouble()*15;
     }
  }
  return Array2D;
 }
 
-void Print2DArray (int [,] Matrix)
+void Print2DArray (double [,] Matrix)
 {
 for (int i=0; i<Matrix.GetLength(0); i++)
  {
