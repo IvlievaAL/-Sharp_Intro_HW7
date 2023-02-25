@@ -4,12 +4,6 @@
 12 13 14 05
 11 16 15 06
 10 09 08 07*/
-/*План действий:
-1. создание массива размера м на н, 
-который будет заполняться целыми числами по порядку, начиная с 0
-2. поменять ему порядок перебора ячеек так, чтобы все время 
-"сворачивал направо" и каждый раз делал всего шагов на 1 шаг меньше,
-чем до поворота*/
 System.Console.WriteLine("Enter number of rows: "); 
 int M = Int32.Parse(System.Console.ReadLine());
 System.Console.WriteLine("Enter number of columns: "); 
@@ -17,21 +11,42 @@ int N = Int32.Parse(System.Console.ReadLine());
 int [,] Matrix= Get2DArray(M,N);
 Print2DArray (Matrix);
 
-int [,] Get2DArray (int M, int N)
+int [,] Get2DArray(int M,int N)
+{
+    int[,] Array2D = new int [M,N];
+    Array2D[0,0]=1;
+    int i=0;
+    int j=0;
+    if (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i+1,j]>0)
+    {
+     Array2D[i-1,j]=Array2D[i,j]+1;
+     i++;
+    }
+    return Array2D;
+}
+
+/*int [,] Get2DArray (int M, int N)
 {
 int[,] Array2D = new int [M,N];
-Array2D[0,0]=0;
-int count=1;
-for (int i=0; i<Array2D.GetLength(0); i++)
- {
+int i=0;
     for (int j=0; j<Array2D.GetLength(1); j++)
     {
-      Array2D[i,j]= Array2D[i,j]+count;
-      count++;
-    }
- }
- return Array2D;
+      Array2D[i,j]= Array2D[i,j]+1;
+    }//это заполнение строки 0 слева направо
+Array2D[i+1,j]=Array2D[i,j];
+    for (i++; i<Array2D.GetLength(1); i++)
+    {
+      Array2D[i,j]= Array2D[i,j]+1;
+    } //это заполнение столбца 3 сверху вниз, начиная со строки 1
+Array2D[i,j-1]=Array2D[i,j]+1;
+    for (j++; j>=0; j=j-1)
+    {
+        Array2D[i,j]= Array2D[i,j]+1;
+    } //это заполнение строки 4 справа налево, начиная со столбца 2
+Array2D[i+1,j+1]=Array2D[i,j]+1;
 }
+ return Array2D;*/
+
 
 void Print2DArray (int [,] Matrix)
 {
