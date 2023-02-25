@@ -17,10 +17,17 @@ int [,] Get2DArray(int M,int N)
     Array2D[0,0]=1;
     int i=0;
     int j=0;
-    if (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i+1,j]>0)
+    while (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i-1,j]==0)
     {
      Array2D[i-1,j]=Array2D[i,j]+1;
      i++;
+     System.Console.WriteLine("прошел1");
+    }
+    while (j+1<Array2D.GetLength(1) &&Array2D[i,j+1]==0)
+    {
+     Array2D[i,j+1]= Array2D[i,j]+1;
+     j++;
+     System.Console.WriteLine("прошел2");
     }
     return Array2D;
 }
