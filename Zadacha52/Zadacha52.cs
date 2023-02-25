@@ -9,7 +9,31 @@ int MaxValue = Int32.Parse(System.Console.ReadLine());
 System.Console.WriteLine("Enter minimal number: "); 
 int MinValue = Int32.Parse(System.Console.ReadLine());
 int [,] Matrix= Get2DArray(M,N,MaxValue,MinValue);
-Print2DArray (Matrix);
+Print2DArray (Matrix); //вывод массива для проверки
+System.Console.WriteLine(); //пустая строка чтоб легче читалась консоль
+double [] MeansOfColumns= GetTheMeansOfColumnsIn2DArray(Matrix);
+
+double [] GetTheMeansOfColumnsIn2DArray (int [,] Matrix)
+{
+ double [] MeansOfColumnsIn2DArray = new double [Matrix.GetLength(1)];
+ int SumOfElementsInColumn=0;
+ for (int j=0; j<Matrix.GetLength(1);)
+    {
+     for (int i=0; i<Matrix.GetLength(0); i++)
+      {
+       SumOfElementsInColumn=SumOfElementsInColumn+Matrix[i,j];
+      }
+    System.Console.WriteLine(SumOfElementsInColumn); // вывод суммы элементов столбца
+    System.Console.WriteLine(); //пустая строка чтоб легче читалась консоль
+    double temp=SumOfElementsInColumn;
+     MeansOfColumnsIn2DArray[j]=temp/Matrix.GetLength(1);
+     System.Console.WriteLine(MeansOfColumnsIn2DArray[j]); //вывод среднего по каждому столбцу
+     SumOfElementsInColumn=0;
+     j++;
+     System.Console.WriteLine(); //пустая строка чтоб легче читалась консоль
+    }
+ return MeansOfColumnsIn2DArray;
+}
 
 int [,] Get2DArray (int M, int N, int MaxValue, int MinValue)
 {
