@@ -17,24 +17,46 @@ int [,] Get2DArray(int M,int N)
     Array2D[0,0]=1;
     int i=0;
     int j=0;
-    while (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i-1,j]==0)
+    int count=1;
+    do
+    {
+       /* while (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i-1,j]==0)
     {
      Array2D[i-1,j]=Array2D[i,j]+1;
      i++;
      System.Console.WriteLine("прошел1");
-    }
+     count++;
+    }*/
     while (j+1<Array2D.GetLength(1) &&Array2D[i,j+1]==0)
     {
      Array2D[i,j+1]= Array2D[i,j]+1;
      j++;
-     System.Console.WriteLine("прошел2");
+     System.Console.WriteLine("прошел вперед");
+     count++;
     }
     while (i+1<Array2D.GetLength(0) &&Array2D[i+1,j]==0)
     {
      Array2D[i+1,j]= Array2D[i,j]+1;
      i++;
-     System.Console.WriteLine("прошел3");
+     System.Console.WriteLine("прошел направо");
+     count++;
     }
+    while (j-1>=0 && j<Array2D.GetLength(1) &&Array2D[i,j-1]==0)
+    {
+     Array2D[i,j-1]= Array2D[i,j]+1;
+     j=j-1;
+     System.Console.WriteLine("повернулся назад и пошел вперед");
+     count++;
+    }
+    while (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i-1,j]==0)
+    {
+     Array2D[i-1,j]= Array2D[i,j]+1;
+     i=i-1;
+     System.Console.WriteLine("глядя назад, прошел направо");
+     count++;
+    }
+    }
+    while (count<Array2D.GetLength(0)*Array2D.GetLength(1));
     return Array2D;
 }
 
