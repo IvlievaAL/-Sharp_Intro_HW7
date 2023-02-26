@@ -20,39 +20,28 @@ int [,] Get2DArray(int M,int N)
     int count=1;
     do
     {
-       /* while (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i-1,j]==0)
-    {
-     Array2D[i-1,j]=Array2D[i,j]+1;
-     i++;
-     System.Console.WriteLine("прошел1");
-     count++;
-    }*/
     while (j+1<Array2D.GetLength(1) &&Array2D[i,j+1]==0)
     {
      Array2D[i,j+1]= Array2D[i,j]+1;
      j++;
-     System.Console.WriteLine("прошел вперед");
      count++;
     }
     while (i+1<Array2D.GetLength(0) &&Array2D[i+1,j]==0)
     {
      Array2D[i+1,j]= Array2D[i,j]+1;
      i++;
-     System.Console.WriteLine("прошел направо");
      count++;
     }
     while (j-1>=0 && j<Array2D.GetLength(1) &&Array2D[i,j-1]==0)
     {
      Array2D[i,j-1]= Array2D[i,j]+1;
      j=j-1;
-     System.Console.WriteLine("повернулся назад и пошел вперед");
      count++;
     }
     while (i-1>=0 && i<Array2D.GetLength(0) &&Array2D[i-1,j]==0)
     {
      Array2D[i-1,j]= Array2D[i,j]+1;
      i=i-1;
-     System.Console.WriteLine("глядя назад, прошел направо");
      count++;
     }
     }
@@ -60,36 +49,13 @@ int [,] Get2DArray(int M,int N)
     return Array2D;
 }
 
-/*int [,] Get2DArray (int M, int N)
-{
-int[,] Array2D = new int [M,N];
-int i=0;
-    for (int j=0; j<Array2D.GetLength(1); j++)
-    {
-      Array2D[i,j]= Array2D[i,j]+1;
-    }//это заполнение строки 0 слева направо
-Array2D[i+1,j]=Array2D[i,j];
-    for (i++; i<Array2D.GetLength(1); i++)
-    {
-      Array2D[i,j]= Array2D[i,j]+1;
-    } //это заполнение столбца 3 сверху вниз, начиная со строки 1
-Array2D[i,j-1]=Array2D[i,j]+1;
-    for (j++; j>=0; j=j-1)
-    {
-        Array2D[i,j]= Array2D[i,j]+1;
-    } //это заполнение строки 4 справа налево, начиная со столбца 2
-Array2D[i+1,j+1]=Array2D[i,j]+1;
-}
- return Array2D;*/
-
-
 void Print2DArray (int [,] Matrix)
 {
 for (int i=0; i<Matrix.GetLength(0); i++)
  {
     for (int j=0; j<Matrix.GetLength(1); j++)
     {
-      System.Console.Write($"{Matrix[i,j]} ");
+      System.Console.Write($"{string.Format("{0:d2}", Matrix[i,j])} ");
     }
     System.Console.WriteLine();
  }
